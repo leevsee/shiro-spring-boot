@@ -1,0 +1,27 @@
+spring:
+  application:
+    name: shiro-test
+  thymeleaf:
+    cache: false
+    mode: LEGACYHTML5
+  datasource:
+    url: jdbc:mysql://127.0.0.1:3306/myShiro
+    username: root
+    password: Bxd12345
+    driver-class-name: com.mysql.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+server:
+  port: 8033
+logging:
+  level:
+    com: debug
+
+mybatis-plus:
+  mapper-locations: classpath:/mapper/*Mapper.xml
+  type-aliases-package: com.example.shiro.entity
+  global-config:
+    refresh-mapper: true
+  configuration:
+    map-underscore-to-camel-case: true
+    cache-enabled: false
+
