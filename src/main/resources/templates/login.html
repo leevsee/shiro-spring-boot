@@ -1,10 +1,32 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>login</title>
 </head>
 <body>
 <p>login</p>
+<form id="login" action="/ajaxLogin" method="post">
+    <input type="text" name="username" value="li" /> <br/>
+    <input type="password" name="password" value="li" />
+</form>
+<button id="click" value="click">click</button>
 </body>
+<script type="text/javascript" src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
+<script th:inline="javascript">
+       $("#click").click(function () {
+            $.ajax({
+                type: "POST",
+                url: "/ajaxLogin",
+                data: $('#login').serialize(),
+                async: false,
+                success: function (data) {
+                    console.log(data);
+                },
+                error: function (request) {
+                    console.log(request)
+                }
+            });
+        });
+</script>
 </html>

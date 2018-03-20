@@ -9,6 +9,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -37,7 +38,6 @@ public class loginController {
 
     /**
      * ajax登录请求
-     *
      */
     @PostMapping("/ajaxLogin")
     @ResponseBody
@@ -62,16 +62,17 @@ public class loginController {
 
 
     //跳转到主页
-    @RequestMapping(value="/index")
+    @RequestMapping(value = "/index")
     public String index() {
         return "index";
     }
+
     /**
      * 退出
      */
-    @RequestMapping(value="/logout",method =RequestMethod.GET)
+    @RequestMapping(value = "/logout", method = RequestMethod.GET)
     @ResponseBody
-    public Map<String,Object> logout(){
+    public Map<String, Object> logout() {
         Map<String, Object> resultMap = new LinkedHashMap<>();
         try {
             //退出
@@ -82,8 +83,13 @@ public class loginController {
         return resultMap;
     }
 
-    @RequestMapping(value="/add")
+    @RequestMapping(value = "/add")
     public String add() {
-        return "add";
+        return "userInfoAdd";
+    }
+
+    @GetMapping("/403")
+    public String error() {
+        return "403";
     }
 }
